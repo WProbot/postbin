@@ -9,6 +9,8 @@ go get github.com/mauleyzaola/postbin
 ### How it works
 
 When you run `./postbin` a key is generated. This is a simple way to ignore requests from unknown clients.
+
+Append this key to the url `<server>/key`. Look below for curl examples on this.
 ```bash
 postbin$ ./postbin
 key:  4a407d07-04fb-4cb9-b839-e95ed351820d
