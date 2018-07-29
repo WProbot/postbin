@@ -10,6 +10,8 @@ go get github.com/mauleyzaola/postbin
 
 When you run `./postbin` a key is generated. This is a simple way to ignore requests from unknown clients.
 
+The key can also be provided as parameter.
+
 Append this key to the url `<server>/key`. Look below for curl examples on this.
 ```bash
 postbin$ ./postbin
@@ -20,10 +22,11 @@ port:  8080
 
 The port can be passed as parameter, default is `8080`.
 ```bash
-postbin$ ./postbin -h
 Usage of ./postbin:
+  -key string
+        if passed it will use to filter request. if not provided a random key will be used
   -port int
-    	specifies the port number where to serve requests from (default 8080)
+        specifies the port number where to serve requests from (default 8080)
 ```
 
 ### Examples
