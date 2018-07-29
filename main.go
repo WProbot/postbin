@@ -17,15 +17,22 @@ import (
 )
 
 func main() {
-	var port int
+	var (
+		port int
+		key  string
+	)
 
 	flag.IntVar(&port, "port", 8080, "specifies the port number where to serve requests from")
+	flag.StringVar(&key, "key", "", "if passed it will use to filter request. if not provided a random key will be used")
 
 	flag.Parse()
 
-	key, err := uuid.NewV4()
-	if err != nil {
-		log.Fatal(err)
+	if len(key) == 0 {
+		k, err := uuid.NewV4()
+		if err != nil {
+			log.Fatal(err)
+		}
+		key = k.String()
 	}
 
 	fmt.Println("key: ", key)
