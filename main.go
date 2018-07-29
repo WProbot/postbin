@@ -53,14 +53,18 @@ func logRequest(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(output, "Method:")
 	fmt.Fprintln(output, r.Method)
 
-	fmt.Fprintln(output, "Headers:")
-	for k, v := range r.Header {
-		fmt.Fprintf(output, "%s:%s\n", k, v[0])
+	if len(r.Header) != 0 {
+		fmt.Fprintln(output, "Headers:")
+		for k, v := range r.Header {
+			fmt.Fprintf(output, "%s:%s\n", k, v[0])
+		}
 	}
 
-	fmt.Fprintln(output, "Query String Values:")
-	for k, v := range r.URL.Query() {
-		fmt.Fprintf(output, "%s:%s\n", k, v[0])
+	if len(r.URL.Query()) != 0 {
+		fmt.Fprintln(output, "Query String Values:")
+		for k, v := range r.URL.Query() {
+			fmt.Fprintf(output, "%s:%s\n", k, v[0])
+		}
 	}
 
 	if data, err := ioutil.ReadAll(r.Body); err == nil && len(data) != 0 {
