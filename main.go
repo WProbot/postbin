@@ -63,7 +63,7 @@ func logRequest(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(output, "%s:%s\n", k, v[0])
 	}
 
-	if data, err := ioutil.ReadAll(r.Body); err == nil {
+	if data, err := ioutil.ReadAll(r.Body); err == nil && len(data) != 0 {
 		fmt.Fprintln(output, "Body:")
 		fmt.Fprintln(output, string(data))
 	}
